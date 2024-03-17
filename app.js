@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const db = require("./database");
-const homeRouter = require("./Routes/home");
+const { setupRotes } = require("./Routes/setupRoutes");
 
 require("./Models/setModels");
 
@@ -19,7 +19,7 @@ app.use(
 );
 app.use(bodyParser.json({ extends: false }));
 
-app.use("/home", homeRouter);
+setupRotes(app);
 
 db.sync({ alter: true })
   .then(() => {

@@ -7,21 +7,41 @@ const EventAndNotice = require("./EventAndNotice/EventAndNotice");
 
 const Branch = require("./StudyMaterials/Branch");
 const Course = require("./StudyMaterials/Course");
-const StudyMaterials = require("./StudyMaterials/StudyMaterial");
+const StudyMaterials = require("./StudyMaterials/Pdf");
 const Subject = require("./StudyMaterials/Subject");
+const Semester = require("./StudyMaterials/Semester");
 
 const Alumni = require("./UserDashboard/Alumni");
 const Faculty = require("./UserDashboard/Faculty");
 const Student = require("./UserDashboard/Student");
 
-// Student.hasMany(EventAndNotice);
-// EventAndNotice.belongsTo(Student);
+const ClubAndMembers = require("./ClubAndSociety/ClubAndMembers");
+const BranchAndSemester = require("./StudyMaterials/BranchAndSemester");
+const CourseAndBranch = require("./StudyMaterials/CouseAndBranch");
+const SemesterAndSubject = require("./StudyMaterials/SemesterAndSubject");
+const SubjectAndPdf = require("./StudyMaterials/SubjectAndPdf");
+const Pdf = require("./StudyMaterials/Pdf");
 
-// Faculty.hasMany(EventAndNotice);
-// EventAndNotice.belongsTo(Faculty);
+User.hasOne(Student);
+Student.belongsTo(User);
 
-Course.hasMany(Branch);
-Branch.belongsTo(Course);
+User.hasOne(Faculty);
+Faculty.belongsTo(User);
 
-Branch.hasMany(Subject);
-Subject.belongsTo(Branch);
+User.hasOne(Alumni);
+Alumni.belongsTo(User);
+
+ClubAndSociety.belongsToMany(ClubMember, { through: ClubAndMembers });
+ClubMember.belongsToMany(ClubAndSociety, { through: ClubAndMembers });
+
+Course.belongsToMany(Branch, { through: CourseAndBranch });
+Branch.belongsToMany(Course, { through: CourseAndBranch });
+
+Branch.belongsToMany(Semester, { through: BranchAndSemester });
+Semester.belongsToMany(Branch, { through: BranchAndSemester });
+
+Semester.belongsToMany(Subject, { through: SemesterAndSubject });
+Subject.belongsToMany(Semester, { through: SemesterAndSubject });
+
+Subject.belongsToMany(Pdf, { through: SubjectAndPdf });
+Pdf.belongsToMany(Subject, { through: SubjectAndPdf });

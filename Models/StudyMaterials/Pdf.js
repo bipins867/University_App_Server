@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../database");
 
-module.exports = sequelize.define("StudyMaterial", {
+module.exports = sequelize.define("PDF", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

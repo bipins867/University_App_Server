@@ -7,12 +7,31 @@ module.exports = sequelize.define("EventAndNotice", {
     primaryKey: true,
     autoIncrement: true,
   },
-  title: Sequelize.STRING,
-  subTitle: Sequelize.STRING,
-  isEvent: Sequelize.BOOLEAN,
-  forWhom: Sequelize.INTEGER,
-  createrId: Sequelize.INTEGER,
-  createrDesignation: Sequelize.STRING,
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  subTitle: {
+    type: Sequelize.STRING,
+
+    allowNull: false,
+  },
+  isEvent: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,
+  },
+  forWhom: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  createrName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  createrDesignation: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   fileInfo: {
     type: Sequelize.STRING,
     defaultValue: "",

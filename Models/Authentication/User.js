@@ -7,12 +7,17 @@ module.exports = sequelize.define("User", {
     primaryKey: true,
     autoIncrement: true,
   },
-  collegeId: Sequelize.INTEGER,
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
+  collegeId: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
   },
 
-  password: Sequelize.STRING,
-  userType: Sequelize.STRING,
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  userType: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });

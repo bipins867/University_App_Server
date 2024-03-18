@@ -38,6 +38,7 @@ exports.login = async (req, res, next) => {
         res.json({
           status: "Login Successfull",
           token: token,
+          userType: user.userType,
         });
       } else {
         return res.status(500).json({ error: "Invalid Password!" });

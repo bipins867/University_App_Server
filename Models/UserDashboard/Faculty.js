@@ -7,20 +7,40 @@ module.exports = sequelize.define("Faculty", {
     primaryKey: true,
     autoIncrement: true,
   },
-  name: Sequelize.STRING,
-
-  collegeId: Sequelize.INTEGER,
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 
   email: {
     type: Sequelize.STRING,
     unique: true,
+    allowNull: false,
   },
 
-  profilePic: Sequelize.STRING,
+  profilePic: {
+    type: Sequelize.STRING,
+    defaultValue: "",
+  },
 
-  qualification: Sequelize.STRING,
-  areaOfSpecialization: Sequelize.STRING,
-  designation: Sequelize.STRING,
-  dateOfJoining: Sequelize.DATE,
-  phone: Sequelize.STRING,
+  qualification: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  areaOfSpecialization: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  designation: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  dateOfJoining: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  phone: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });

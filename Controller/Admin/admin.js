@@ -1,32 +1,30 @@
 const EventAndNotice = require("../../Models/EventAndNotice/EventAndNotice");
+const { sendNotification, createNotificationObj } = require("./admin_utils");
 
 exports.sendGlobalNotification = async (req, res, next) => {
   const body = req.body;
-  const user = req.user;
 
-  const obj = {
-    title: body.title,
-    subTitle: body.subTitle,
-    isEvent: body.isEvent,
-    forWhom: 1111,
-    createrName: body.name,
-    createrDesignation: "VC",
-    fileInfo: "",
-  };
+  const obj = createNotificationObj(body, 1111);
 
-  try {
-    await EventAndNotice.create(obj);
-    res.json({ status: "Notification Sent Successfully" });
-  } catch (e) {
-    res.status(500).json({ error: "Something went Wrong!" });
-    console.log("Error", e);
-  }
+  sendNotification(res, obj);
 };
 
 exports.sendFacultyNotification = (req, res, next) => {
-  res.json({ id: 2 });
+  const body = req.body;
+
+  const obj = createNotificationObj(body, 2222);
+  sendNotification(res, obj);
 };
 
-exports.getFacultyList = (req, res, next) => {
-  res.json({ id: 3 });
+exports.sendStudentNotification = (req, res, next) => {
+  const body = req.body;
+
+  const obj = createNotificationObj(body, 3333);
+  sendNotification(res, obj);
+};
+exports.sendAlumniNotification = (req, res, next) => {
+  const body = req.body;
+
+  const obj = createNotificationObj(body, 4444);
+  sendNotification(res, obj);
 };

@@ -7,10 +7,12 @@ exports.getEventAndNotifications = async (req, res, next) => {
     const eventResult = await EventAndNotice.findAll({
       where: { forWhom: parseInt(forWhom), isEvent: false },
       order: [["id", "DESC"]],
+      limit: 10,
     });
     const noticeResult = await EventAndNotice.findAll({
       where: { forWhom: parseInt(forWhom), isEvent: true },
       order: [["id", "DESC"]],
+      limit: 10,
     });
 
     res.json({

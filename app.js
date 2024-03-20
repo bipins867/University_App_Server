@@ -21,7 +21,7 @@ app.use(bodyParser.json({ extends: false }));
 
 setupRotes(app);
 
-db.sync()
+db.sync({ alter: true })
   .then(() => {
     app.listen(process.env.APP_PORT);
   })

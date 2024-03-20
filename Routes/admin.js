@@ -23,6 +23,10 @@ router.post(
   "/events/sendAlumniNotification",
   adminController.sendAlumniNotification
 );
+router.post(
+  "/events/sendDepartmentNotification",
+  adminController.sendDepartmentNotification
+);
 
 router.post("/users/addStudent", adminStudentController.addStudents);
 router.post("/users/addFaculty", adminFacultyController.addFaculty);

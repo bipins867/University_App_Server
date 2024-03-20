@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../database");
 
-module.exports = sequelize.define("PDF", {
+module.exports = sequelize.define("Pdf", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -13,5 +13,9 @@ module.exports = sequelize.define("PDF", {
   isQuestionPaper: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
+  },
+  pdfUrl: {
+    type: Sequelize.STRING,
+    defaultValue: "",
   },
 });

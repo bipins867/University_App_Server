@@ -22,7 +22,6 @@ module.exports = sequelize.define("Alumni", {
   },
   email: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false,
   },
   phone: {

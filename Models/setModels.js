@@ -7,20 +7,22 @@ const EventAndNotice = require("./EventAndNotice/EventAndNotice");
 
 const Branch = require("./StudyMaterials/Branch");
 const Course = require("./StudyMaterials/Course");
-const StudyMaterials = require("./StudyMaterials/Pdf");
+
 const Subject = require("./StudyMaterials/Subject");
 const Semester = require("./StudyMaterials/Semester");
-
+const Pdf = require("./StudyMaterials/Pdf");
 const Alumni = require("./UserDashboard/Alumni");
 const Faculty = require("./UserDashboard/Faculty");
 const Student = require("./UserDashboard/Student");
 
-const ClubAndMembers = require("./ClubAndSociety/ClubAndMembers");
-const BranchAndSemester = require("./StudyMaterials/BranchAndSemester");
-const CourseAndBranch = require("./StudyMaterials/CouseAndBranch");
-const SemesterAndSubject = require("./StudyMaterials/SemesterAndSubject");
-const SubjectAndPdf = require("./StudyMaterials/SubjectAndPdf");
-const Pdf = require("./StudyMaterials/Pdf");
+const Department = require("./Department/Department");
+const DepartmentAndFaculty = require("./AndModel/DepartmentAndFaculty");
+
+const ClubAndMembers = require("./AndModel/ClubAndMembers");
+const BranchAndSemester = require("./AndModel/BranchAndSemester");
+const CourseAndBranch = require("./AndModel/CouseAndBranch");
+const SemesterAndSubject = require("./AndModel/SemesterAndSubject");
+const SubjectAndPdf = require("./AndModel/SubjectAndPdf");
 
 User.hasOne(Student);
 Student.belongsTo(User);
@@ -45,3 +47,6 @@ Subject.belongsToMany(Semester, { through: SemesterAndSubject });
 
 Subject.belongsToMany(Pdf, { through: SubjectAndPdf });
 Pdf.belongsToMany(Subject, { through: SubjectAndPdf });
+
+Department.belongsToMany(Faculty, { through: DepartmentAndFaculty });
+Faculty.belongsToMany(Department, { through: DepartmentAndFaculty });

@@ -28,3 +28,9 @@ exports.sendAlumniNotification = (req, res, next) => {
   const obj = createNotificationObj(body, 4444);
   sendNotification(res, obj);
 };
+exports.sendDepartmentNotification = (req, res, next) => {
+  const body = req.body;
+
+  const obj = createNotificationObj(body, 5555);
+  sendNotification(res, obj);
+};

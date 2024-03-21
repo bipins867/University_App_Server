@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../database");
 
-module.exports = sequelize.define("EventAndNotice", {
+module.exports = sequelize.define("Notification", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -19,10 +19,6 @@ module.exports = sequelize.define("EventAndNotice", {
   isEvent: {
     type: Sequelize.BOOLEAN,
     defaultValue: true,
-  },
-  forWhom: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
   },
   createrName: {
     type: Sequelize.STRING,

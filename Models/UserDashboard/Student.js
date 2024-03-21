@@ -9,9 +9,12 @@ module.exports = sequelize.define("Student", {
   },
   name: { type: Sequelize.STRING, allowNull: false },
   fathersName: { type: Sequelize.STRING, allowNull: false },
-  department: { type: Sequelize.STRING, allowNull: false },
   email: {
     type: Sequelize.STRING,
+    allowNull: false,
+  },
+  yearOfJoining: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
   phone: { type: Sequelize.STRING, allowNull: false },

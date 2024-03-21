@@ -12,10 +12,6 @@ module.exports = sequelize.define("Alumni", {
     allowNull: false,
   },
 
-  course: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   address: {
     type: Sequelize.STRING,
     allowNull: false,

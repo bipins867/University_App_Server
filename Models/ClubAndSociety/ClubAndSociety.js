@@ -7,12 +7,23 @@ module.exports = sequelize.define("Clubandsociety", {
     primaryKey: true,
     autoIncrement: true,
   },
-  title: Sequelize.STRING,
-  subTitle: Sequelize.STRING,
-  membersCount: Sequelize.INTEGER,
-  profilePic: Sequelize.STRING,
-  numOfYears: {
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  subTitle: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  profilePic: {
+    type: Sequelize.STRING,
+    defaultValue: "",
+  },
+  about: {
+    type: Sequelize.TEXT,
+  },
+  noOfYears: {
     type: Sequelize.INTEGER,
-    defaultValue: 4,
+    allowNull: false,
   },
 });

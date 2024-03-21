@@ -9,6 +9,7 @@ exports.createCourse = async (req, res, next) => {
     const obj = {
       title: body.title,
       subTitle: body.subTitle,
+      noOfYears: body.noOfYears,
     };
     await Course.create(obj);
     res.json({ status: "Successfull!" });

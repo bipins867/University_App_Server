@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../database");
 
-module.exports = sequelize.define("Course", {
+module.exports = sequelize.define("GlobalUser", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -13,10 +13,6 @@ module.exports = sequelize.define("Course", {
   },
   subTitle: {
     type: Sequelize.STRING,
-    allowNull: false,
-  },
-  noOfYears: {
-    type: Sequelize.INTEGER,
     allowNull: false,
   },
 });

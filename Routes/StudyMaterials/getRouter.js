@@ -3,10 +3,10 @@ const getStudyMaterialController = require("../../Controller/StudyMaterials/getS
 
 const router = express.Router();
 
-router.post("/Course", getStudyMaterialController.getCourse);
-router.post("/Branch", getStudyMaterialController.getBranch);
-router.post("/Semester", getStudyMaterialController.getSemester);
-router.post("/Subject", getStudyMaterialController.getSubject);
-router.post("/Pdf", getStudyMaterialController.getPdf);
+router.post("/courses", getStudyMaterialController.getCourse);
+router.post("/branches", getStudyMaterialController.getBranch);
+router.post("/semesters", getStudyMaterialController.getSemester);
+router.post("/subjects", getStudyMaterialController.getSubject);
+router.post("/pdfs", getStudyMaterialController.getPdf);
 
 module.exports = router;

@@ -4,6 +4,7 @@ const createDepartmentController = require("../../Controller/Department/createDe
 
 const router = express.Router();
 
-router.post("/Department", createDepartmentController.createDepartment);
+router.post("/department", createDepartmentController.createDepartment);
+router.post("/faculty", createDepartmentController.addFacultyToDepartment);
 
 module.exports = router;

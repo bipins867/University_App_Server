@@ -20,7 +20,7 @@ exports.addStudent = async (req, res, next) => {
       email: body.email,
       phone: body.phone,
       address: body.address,
-      profilePic: body.profilePic,
+      profilePic: "",
     };
 
     const user = await User.findOne({

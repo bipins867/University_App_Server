@@ -46,6 +46,6 @@ exports.login = async (req, res, next) => {
     });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "Something went Wrong!" });
+    res.status(500).json({ error: e.toString() });
   }
 };

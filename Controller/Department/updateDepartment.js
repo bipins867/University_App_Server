@@ -51,3 +51,18 @@ exports.addFaculty = async (req, res, next) => {
     res.status(500).json({ error: "Something went Wrong!" });
   }
 };
+
+exports.updateDepartmentInfo = async (req, res, next) => {
+  const body = req.body;
+  try {
+    const departmentInfo = body.departmentInfo;
+    const department = await Department.findOne({
+      where: { id: departmentInfo.id },
+    });
+    await department.update(departmentInfo);
+
+    res.json({ status: "Successfull!" });
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+};

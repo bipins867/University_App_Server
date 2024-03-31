@@ -72,19 +72,19 @@ exports.getDepartmentFaculty = async (req, res, next) => {
 
 exports.getUserInfo = async (req, res, next) => {
   const body = req.body;
-
+  const user = req.user;
   try {
-    const collegeId = body.collegeId;
-    const userType = body.userType;
-    const user = await User.findOne({
-      where: { collegeId: collegeId, userType: userType },
-    });
+    // const collegeId = body.collegeId;
+    // const userType = body.userType;
+    // const user = await User.findOne({
+    //   where: { collegeId: collegeId, userType: userType },
+    // });
     let userInfo;
-    if (userType == "student") {
+    if (user.userType == "student") {
       userInfo = await user.getStudent();
-    } else if (userType == "faculty") {
+    } else if (user.userType == "faculty") {
       userInfo = await user.getFaculty();
-    } else if (userType == "alumni") {
+    } else if (user.userType == "alumni") {
       userInfo = await user.getAlumni();
     } else {
       return res

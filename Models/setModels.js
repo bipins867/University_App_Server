@@ -1,3 +1,5 @@
+const AdminUser = require("./AdminUser/AdminUser");
+
 const User = require("./Authentication/User");
 
 const ClubAndSociety = require("./ClubAndSociety/ClubAndSociety");

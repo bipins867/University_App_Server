@@ -17,6 +17,11 @@ module.exports = sequelize.define("Student", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
   phone: { type: Sequelize.STRING, allowNull: false },
   address: { type: Sequelize.STRING, allowNull: false },
   profilePic: { type: Sequelize.STRING, defaultValue: "" },

@@ -3,7 +3,10 @@ const getClubAndSocietesController = require("../../Controller/ClubAndSociety/ge
 
 const router = express.Router();
 
-router.get("/clubAndSocietes", getClubAndSocietesController.getClubAndSocietes);
+router.get(
+  "/clubAndSocieties",
+  getClubAndSocietesController.getClubAndSocietes
+);
 router.post("/members", getClubAndSocietesController.getMembers);
 
 module.exports = router;

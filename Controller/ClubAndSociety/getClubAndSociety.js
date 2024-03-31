@@ -4,9 +4,9 @@ exports.getClubAndSocietes = async (req, res, next) => {
   const body = req.body;
 
   try {
-    const clubAndSocietes = await ClubAndSociety.findAll();
+    const clubAndSocieties = await ClubAndSociety.findAll();
 
-    res.json({ status: "Successfull!", clubAndSocietes: clubAndSocietes });
+    res.json({ status: "Successfull!", clubAndSocieties: clubAndSocieties });
   } catch (e) {
     console.log(e);
 

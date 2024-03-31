@@ -33,3 +33,20 @@ exports.updateAdmin = async (req, res, next) => {
     res.status(500).json({ error: "Something went Wrong!" });
   }
 };
+
+exports.updateInfo = async (req, res, next) => {
+  const body = req.body;
+  try {
+    const clubAndSocietyInfo = body.clubAndSocietyInfo;
+
+    const clubAndSociety = await ClubAndSociety.findOne({
+      where: { id: clubAndSocietyInfo.id },
+    });
+
+    await clubAndSociety.update(clubAndSocietyInfo);
+
+    res.json({ status: "Successfull!" });
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+};

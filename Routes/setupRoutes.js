@@ -9,6 +9,8 @@ const clubAndSocietyRouter = require("./ClubAndSociety/clubAndSociety");
 const userRouter = require("./User/user");
 const globalUserRouter = require("./GlobalUser/globalUser");
 const notificationsRouter = require("./Notifications/notifications");
+const authenticationRouter = require("./Authentication/authentication");
+const adminRouter = require("./AdminUser/admin");
 
 exports.setupRotes = (app) => {
   app.use("/studyMaterials", studyMaterialsRouter);
@@ -17,6 +19,8 @@ exports.setupRotes = (app) => {
   app.use("/user", userRouter);
   app.use("/globalUser", globalUserRouter);
   app.use("/notifications", notificationsRouter);
+  app.use("/auth", authenticationRouter);
+  app.use("/admin", adminRouter);
   // app.use("/home", homeRouter);
   // app.use("/admin", adminRouter);
   // app.use("/eventAndNotice", eventAndNoticeRouter);

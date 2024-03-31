@@ -60,19 +60,25 @@ exports.getPdf = async (req, res, next) => {
   const body = req.body;
   try {
     const subjectId = body.subjectId;
+    const all = body.all;
 
     const subject = await Subject.findOne({ where: { id: subjectId } });
-    const questionPaperPdf = await subject.getPdfs({
-      where: { isQuestionPaper: true },
-    });
-    const studyMaterialPdf = await subject.getPdfs({
-      where: { isQuestionPaper: false },
-    });
-    res.json({
-      status: "Successfull!",
-      questionPaperPdf: questionPaperPdf,
-      studyMaterialPdf: studyMaterialPdf,
-    });
+    if (all) {
+      const pdfs = await subject.getPdfs();
+      res.json({ status: "Successfull!", pdfs: pdfs });
+    } else {
+      const questionPaperPdf = await subject.getPdfs({
+        where: { isQuestionPaper: true },
+      });
+      const studyMaterialPdf = await subject.getPdfs({
+        where: { isQuestionPaper: false },
+      });
+      res.json({
+        status: "Successfull!",
+        questionPaperPdf: questionPaperPdf,
+        studyMaterialPdf: studyMaterialPdf,
+      });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Something went wrong!" });

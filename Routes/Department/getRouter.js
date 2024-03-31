@@ -4,7 +4,7 @@ const getDepartmentController = require("../../Controller/Department/getDepartme
 
 const router = express.Router();
 
-router.get("/department", getDepartmentController.getDepartments);
+router.get("/departments", getDepartmentController.getDepartments);
 router.post("/faculties", getDepartmentController.getFacultyList);
 
 module.exports = router;

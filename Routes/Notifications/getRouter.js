@@ -4,8 +4,11 @@ const getNotificationController = require("../../Controller/Notifications/getNot
 
 const router = express.Router();
 
+router.get("/notifications", getNotificationController.getAllNotifications);
+
 router.post("/global", getNotificationController.getGlobalNotifications);
 router.post("/faculty", getNotificationController.getFacultyNotifications);
+
 router.post("/course", getNotificationController.getCourseNotifications);
 router.post(
   "/clubAndSociety",

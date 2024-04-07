@@ -1,6 +1,7 @@
 const ClubAndSociety = require("../../Models/ClubAndSociety/ClubAndSociety");
 const User = require("../../Models/Authentication/User");
 const Student = require("../../Models/UserDashboard/Student");
+const { uploadFileWithRandomName } = require("../../Utils/utils");
 
 exports.createClubAndSociety = async (req, res, next) => {
   const body = req.body;
@@ -11,6 +12,7 @@ exports.createClubAndSociety = async (req, res, next) => {
       subTitle: body.subTitle,
       about: body.about,
       noOfYears: body.noOfYears,
+      profilePic: await uploadFileWithRandomName(req),
     };
 
     await ClubAndSociety.create(obj);
@@ -26,7 +28,7 @@ exports.addMember = async (req, res, next) => {
   const body = req.body;
 
   try {
-    const collegeId = body.collegeId;
+    const collegeId = body.id;
     const clubAndSocietyId = body.clubAndSocietyId;
 
     const designation = body.designation;

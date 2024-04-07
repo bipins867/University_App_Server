@@ -2,6 +2,7 @@ const sequelize = require("../../database");
 const User = require("../../Models/Authentication/User");
 const Course = require("../../Models/StudyMaterials/Course");
 const bcrypt = require("bcrypt");
+const { uploadFileWithRandomName } = require("../../Utils/utils");
 
 exports.addStudent = async (req, res, next) => {
   const body = req.body;
@@ -20,7 +21,7 @@ exports.addStudent = async (req, res, next) => {
       email: body.email,
       phone: body.phone,
       address: body.address,
-      profilePic: "",
+      profilePic: await uploadFileWithRandomName(req),
     };
 
     const user = await User.findOne({
@@ -55,7 +56,7 @@ exports.addStudent = async (req, res, next) => {
   } catch (e) {
     if (transaction) transaction.rollback();
 
-    res.status(500).json({ error: "Something went Wrong!" });
+    res.status(500).json({ error: e.toString() });
     console.log(e);
   }
 };
@@ -80,7 +81,7 @@ exports.addFaculty = async (req, res, next) => {
       email: body.email,
       phone: body.phone,
       address: body.address,
-      profilePic: body.profilePic,
+      profilePic: await uploadFileWithRandomName(req),
     };
 
     const user = await User.findOne({
@@ -131,7 +132,7 @@ exports.addAlumni = async (req, res, next) => {
       email: body.email,
       phone: body.phone,
       address: body.address,
-      profilePic: body.profilePic,
+      profilePic: await uploadFileWithRandomName(req),
     };
 
     const user = await User.findOne({

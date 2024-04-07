@@ -1,5 +1,6 @@
 const User = require("../../Models/Authentication/User");
 const Department = require("../../Models/Department/Department");
+const { uploadFileWithRandomName } = require("../../Utils/utils");
 
 exports.createDepartment = async (req, res, next) => {
   const body = req.body;
@@ -9,6 +10,7 @@ exports.createDepartment = async (req, res, next) => {
       title: body.title,
       subTitle: body.subTitle,
       about: body.about,
+      imageUrl: await uploadFileWithRandomName(req),
     };
     await Department.create(obj);
     res.json({ status: "Successfull!" });

@@ -34,11 +34,21 @@ exports.login = async (req, res, next) => {
           },
           process.env.JWT_SECRET_KEY
         );
+        var userInfo;
+        const userType = body.userType;
+        if (userType == "student") {
+          userInfo = await user.getStudent();
+        } else if (userType == "faculty") {
+          userInfo = await user.getFaculty();
+        } else {
+          userInfo = await user.getAlumni();
+        }
 
         res.json({
           status: "Login Successfull",
           token: token,
           userType: user.userType,
+          userInfo: userInfo,
         });
       } else {
         return res.status(500).json({ error: "Invalid Password!" });

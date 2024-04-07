@@ -1,3 +1,6 @@
+const HomeImage = require("./Home/HomeImages");
+const Leader = require("./Home/Leaders");
+
 const AdminUser = require("./AdminUser/AdminUser");
 
 const User = require("./Authentication/User");

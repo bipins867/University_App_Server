@@ -2,6 +2,7 @@ const Course = require("../../Models/StudyMaterials/Course");
 const Semester = require("../../Models/StudyMaterials/Semester");
 const Branch = require("../../Models/StudyMaterials/Branch");
 const Subject = require("../../Models/StudyMaterials/Subject");
+const { uploadFileWithRandomName } = require("../../Utils/utils");
 
 exports.createCourse = async (req, res, next) => {
   const body = req.body;
@@ -87,7 +88,7 @@ exports.createPdf = async (req, res, next) => {
       title: body.title,
       subTitle: body.subTitle,
       isQuestionPaper: body.isQuestionPaper,
-      pdfUrl: body.pdfUrl,
+      pdfUrl: await uploadFileWithRandomName(req),
     };
 
     const subject = await Subject.findOne({ where: { id: subjectId } });
